@@ -94,7 +94,14 @@ async function storage() {
   }
 }
 
+const limpando = () => {
+  itemsDois.innerHTML = '';
+};
+
 window.onload = () => {
   storage();
   createElement();
+
+  const limparCarrinho = document.querySelector('.empty-cart');
+  limparCarrinho.addEventListener('click', limpando);
 };
