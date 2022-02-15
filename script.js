@@ -65,10 +65,21 @@ function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
 
+function carregando(element) {
+  const load = createCustomElement('section', 'loading', 'Loading');
+  element.appendChild(load);
+}
+
+function carregou(element) {
+  const carrega = document.querySelector('.loading');
+  element.removeChild(carrega);
+}
+
 async function createElement() {
   const items = document.querySelector('.items');
-
+  carregando(items);
   const produtos = await fetchProducts('computador');
+  carregou(items);
   /* console.log(produtos, 'produtos'); */
   produtos.results.forEach((element) => {
     const product = {
